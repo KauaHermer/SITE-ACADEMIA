@@ -126,6 +126,8 @@ header.rolagem {
 
 #inicio img {
   height: 100vh;
+  width: 100%;
+  object-fit: cover;
 }
 
 #inicio h5 {
@@ -134,6 +136,113 @@ header.rolagem {
   margin: 40px 0;
   font-size: 60px;
 }
+
+/* FIM HEADER */
+
+/* arrow down */
+
+#setaparabaixo {
+  display: none; /* Oculta por padrão */
+}
+
+.scrolldown {
+  --color: #339c13;
+  --sizeX: 30px;
+  --sizeY: 50px;
+  position: relative;
+  width: var(--sizeX);
+  height: var(--sizeY);
+  margin-left: var(sizeX / 2);
+  border: calc(var(--sizeX) / 10) solid var(--color);
+  border-radius: 50px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.centralizando {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrolldown::before {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--color);
+  border-radius: 100%;
+  animation: scrolldown-anim 2s infinite;
+  box-sizing: border-box;
+  box-shadow: 0px -5px 3px 1px #339c13;
+}
+
+@keyframes scrolldown-anim {
+  0% {
+    opacity: 0;
+    height: 6px;
+  }
+
+  40% {
+    opacity: 1;
+    height: 10px;
+  }
+
+  80% {
+    transform: translate(0, 20px);
+    height: 10px;
+    opacity: 0;
+  }
+
+  100% {
+    height: 3px;
+    opacity: 0;
+  }
+}
+
+.chevrons {
+  padding: 6px 0 0 0;
+  margin-left: -3px;
+  margin-top: 48px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chevrondown {
+  margin-top: -6px;
+  position: relative;
+  border: solid var(--color);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.chevrondown:nth-child(odd) {
+  animation: pulse54012 500ms ease infinite alternate;
+}
+
+.chevrondown:nth-child(even) {
+  animation: pulse54012 500ms ease infinite alternate 250ms;
+}
+
+@keyframes pulse54012 {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.5;
+  }
+}
+
+/*FIM arrow down */
 
 /* PQNOS */
 
@@ -583,12 +692,16 @@ input:checked + .slider:before {
 /* FIM PRICING */
 
 /* REVIEW */
+#review {
+  padding: 40px 8%;
+  text-align: center;
+}
+
 #review h1 {
   font-weight: 900;
   color: #fff;
   margin: 40px 0;
   font-size: 60px;
-  text-align: center;
 }
 
 #review h3 {
@@ -610,91 +723,39 @@ input:checked + .slider:before {
   color: #fff;
 }
 
-#review {
-  padding: 40px 8%;
-}
-
 #review .img-review {
-  position: absolute;
-  width: 1300px;
-  height: 700px;
+  width: 100%;
+  max-width: 1300px;
+  height: 500px; /* Definir altura fixa */
+  object-fit: cover;
   border-radius: 20px;
 }
 
 #review .interface {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
-  width: 1300px;
-  height: 700px;
+  gap: 20px;
+  max-width: 100%;
+  margin-top: 20px;
 }
 
 .snip1533 {
+  position: relative;
+  bottom: 400px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
   color: #ffffff;
   display: inline-block;
   font-family: "Poppins", sans-serif;
   font-size: 16px;
-  margin: 35px 10px 10px;
   max-width: 310px;
   min-width: 250px;
-  position: relative;
   text-align: center;
   width: 100%;
   background-color: #1e2321;
   border-radius: 5px;
   border-top: 5px solid #339c13;
-}
-
-.snip1533 *,
-.snip1533 *:before {
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
-}
-
-.snip1533 figcaption {
-  padding: 13% 10% 12%;
-}
-
-.snip1533 figcaption:before {
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-  border-radius: 50%;
-  color: transparent;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-  content: "\f10e";
-  line-height: 60px;
-  position: absolute;
-  top: -30px;
-  width: 60px;
-}
-
-.snip1533 figcaption.img1::before {
-  background-image: url(img/cbum.webp);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.snip1533 figcaption.img2::before {
-  background-image: url(img/ramon.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.snip1533 figcaption.img3::before {
-  background-image: url(img/jorlan.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.snip1533 h3 {
-  color: #3c3c3c;
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 24px;
-  margin: 10px 0 5px;
+  padding: 20px;
 }
 
 /* FIM REVIEW */
@@ -766,11 +827,38 @@ input:checked + .slider:before {
     width: 50%;
     margin-bottom: 30px;
   }
+
+  .icone-wtzp{
+    text-align: center;
+    justify-content: center;
+    border-radius: 100%;
+    z-index: 999999999;
+    left: 80%;
+    color: #ffffff;
+    position: fixed;
+    font-size: 40px;
+    top: 87%;
+    height: 60px;
+    width: 60px;
+    background-color: #05c46b;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .icone-wtzp a  { color: inherit; } 
+
   .flex {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  /* HEADER INICIO */
+
+  #header .interface {
+    flex-direction: column;
+    align-items: center;
   }
 
   header .navbar {
@@ -781,22 +869,43 @@ input:checked + .slider:before {
   }
 
   header {
-    background-color: #000;
+    background-color: #000000bd;
     padding: 20px 0;
   }
 
-  #inicio img {
-    height: 50vh;
+  #setaparabaixo {
+    display: block; /* Exibe apenas em telas menores */
   }
 
   #carouselExampleCaptions {
+    height: 70vh;
     margin-top: 80px;
-    height: 50vh;
   }
 
-  #pqnos h1{
+  #inicio img {
+    height: 70vh;
+  }
+
+  #inicio h5 {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  #inicio p {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  .carousel-caption {
+    bottom: 10%;
+  }
+
+  /* FIM HEADER */
+
+  /* PQP NOS */
+  #pqnos h1 {
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
   }
   .nos-topo .nos-box {
     width: 350px;
@@ -813,8 +922,132 @@ input:checked + .slider:before {
     font-size: 14px;
   }
 
+  /* FIM PQ NOS */
 
+  /* INICIO ABOUT */
+  #about {
+    padding: 20px 5%;
+  }
 
+  #about h1 {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+  }
+
+  #about p {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  #about .p1 {
+    font-size: 18px;
+    width: 100%;
+  }
+
+  #about .imagem-pincipal img {
+    width: 100%;
+    height: auto;
+  }
+
+  #about .idade {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  #about .y-box {
+    width: 200px;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+  .y-box h3 {
+    font-size: 22px;
+  }
+
+  /* FIM ABOUT */
+
+  /* INICIO TREINADORES */
+  #treiners {
+    padding: 20px 5%;
+  }
+
+  #treiners h1 {
+    text-align: center;
+    font-size: 30px;
+    margin: 20px 0;
+  }
+
+  #treiners .p1 {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  #treiners .flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #treiners .img-treiners {
+    width: 100%; /* Para que os treinadores ocupem toda a largura disponível */
+    margin: 20px 0;
+  }
+
+  #treiners .img-treiners img {
+    width: 80%; /* Reduzindo a largura das imagens para caber melhor em dispositivos móveis */
+    height: auto;
+  }
+
+  #treiners h3 {
+    font-size: 18px;
+  }
+
+  #treiners p {
+    font-size: 14px;
+  }
+
+  /* FIM TREINADORES */
+
+  .img-mulher {
+    height: 300px; /* Altura ajustada para tablets */
+  }
+
+  /* INCIO PRINCING */
+
+  #pricing h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  /* FIM PRINCING */
+
+  /* INICIO REVIEW */
+
+  #review h1 {
+    font-size: 30px;
+  }
+
+  #review p {
+    font-size: 16px;
+  }
+
+  #review .interface {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .snip1533 {
+    width: 90%;
+    max-width: 400px;
+    bottom: 1px;
+  }
+
+  #review .img-review {
+    display: none;
+  }
+
+  /* FIM REVIEW */
 }
 @media (max-width: 574px) {
   .footer-col {
