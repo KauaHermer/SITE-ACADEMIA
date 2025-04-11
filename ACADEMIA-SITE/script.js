@@ -1,8 +1,24 @@
 // EFEITO ROLAGEM 
-window.addEventListener("scroll", function(){
-    let header = document.querySelector('#header')
-    header.classList.toggle('rolagem',window.scrollY > 0)
-})
+function handleHeaderScroll() {
+    let header = document.querySelector('#header');
+
+    if (window.innerWidth < 767) {
+        header.classList.remove('rolagem'); // Remove a classe se a tela for menor que 767px
+        window.removeEventListener("scroll", toggleHeaderClass); // Remove o event listener
+    } else {
+        window.addEventListener("scroll", toggleHeaderClass); // Adiciona o event listener se a tela for maior
+    }
+}
+
+function toggleHeaderClass() {
+    let header = document.querySelector('#header');
+    header.classList.toggle('rolagem', window.scrollY > 0);
+}
+
+// Executa a função ao carregar a página e ao redimensionar a tela
+handleHeaderScroll();
+window.addEventListener('resize', handleHeaderScroll);
+
 
 // FIM EFEITO ROLAGEM
 
